@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>Uwants Friends</title>
+
+	<!-- <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.js'></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	
+	<!-- back to top -->
+	<script type="text/javascript" src="http://www.sanrio.co.jp/special/halloween/2016/assets/js/jquery.transit.min.js"></script>
+	<script type="text/javascript" src="http://www.sanrio.co.jp/special/halloween/2016/assets/js/jquery.easing.1.3.js"></script>
+
+
+		
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<!-- space ship -->
+	 <script type="text/javascript" charset="utf-8" src="edge_includes/edge.6.0.0.min.js"></script>
+	<!-- end space ship -->
+
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- <script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<!-- scroll sections -->
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('a[href*=#]').on('click', function(e) {
+			e.preventDefault();
+			$('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+		});
+	});
+</script>
+
+
+<!-- nav -->
+
+<script type="text/javascript">
+	
+
+//Only works in Chrome. Best viewed full screen: http://codepen.io/trhino/full/qcvBd
+
+leftPos = $(window).width() + 200;
+
+function setLeft(){
+  leftPos = $(window).width() + 200;
+  $('nav li').css('left', -leftPos); 
+};
+setLeft();
+
+//Nav in
+$('.fa-reorder').on('click', function(){
+  var timer = 0
+  
+  $('nav li').each(function(){
+    timer = timer + 75;
+    var $this = $(this);
+    setTimeout(function(){
+      $this.animate({ left : 0 }, 200);
+    }, timer);    
+    });
+    
+    $('.fa-reorder').fadeOut(100);
+  });
+
+//Nav out
+$('nav li a').on('click', function(){
+    var timer = 0;
+    $('nav li').each(function(){
+    timer = timer + 74;
+    var $this = $(this);
+    setTimeout(function(){
+      $this.animate({ left : -leftPos }, 200, function(){
+        $('.fa-reorder').fadeIn(500);
+      });
+    }, timer); 
+  });
+  
+}); 
+
+
+//Set the nav font size based on vertical window height
+function browserHeight(){
+  var navHeight = $('nav li').height();
+  $('nav li a').css({
+    'font-size' : navHeight / 2.3
+  });
+};
+browserHeight();
+
+$(window).on('resize', browserHeight);
+
+
+
+</script>
+
+
+<!-- nav end -->
+
+
+<!-- back to top -->
+
+<script type="text/javascript">
+	$(function() {
+		var scrollFlg = false;
+		$(".pageTop").on({
+			'click': function() {
+				$('html,body').stop().animate({
+					scrollTop: 0
+				}, 1500, 'easeInOutQuart');
+				pageTopMove();
+				return false;
+			}
+		});
+
+		function pageTopMove() {
+			scrollFlg = true;
+			$('.pageTop a').transition({
+				y: -$(window).height()
+			}, 1500, 'easeInQuart', function() {
+				$('.pageTop a').css({
+					y: 0
+				})
+
+				$(".pageTop").hide();
+				scrollFlg = false;
+			});
+		}
+
+		$(window).scroll(function() {
+			var current_pos = $(this).scrollTop();
+			var footY = ($("#footer").offset().top||0 )- window.innerHeight;
+			if (current_pos > 500) {
+				$(".pageTop").fadeIn();
+			} else {
+				if (!scrollFlg) $(".pageTop").fadeOut();
+			}
+		});
+	});
+
+</script>
+
+
+
+
+<!-- end back to top -->
+
+
+
+		<!-- mobile top button -->
+		<script type="text/javascript">
+		$(document).ready(function() {
+			// Show or hide the sticky footer button
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 200) {
+					$('.go-top').fadeIn(200);
+				} else {
+					$('.go-top').fadeOut(200);
+				}
+			});
+			
+			// Animate the scroll to top
+			$('.go-top').click(function(event) {
+				event.preventDefault();
+				
+				$('html, body').animate({scrollTop: 0}, 300);
+			})
+		});
+		</script>
+
+		<!-- end mobile top button -->
+
+
+
+<!-- character - slider -->
+
+<script type="text/javascript">
+	
+
+	$(document).ready(function(){
+
+		$('#myModal').on('shown.bs.modal', function () {
+			$('#myInput').focus()
+		});
+
+
+		$(function () {
+			slider();
+		});
+
+
+		function slider() {
+		var size = $("#carousel > div").length; //number of items in carousel
+		var position = 0; // current position of carousal
+		var sliderIntervalID; // used to clear autoplay
+		var sliderInterval = 4000; // interval of autoplay
+		var changeInterval = 1000; // interval between change of slides
+
+		// $("#carousel > div").not(".show").fadeOut(); //fadeout all items except the one with .show
+
+		startSlider(); //starts autoplay
+
+		// function to start auto play
+		function startSlider() {
+			sliderIntervalID = setInterval(function () {
+				run(1);
+			}, sliderInterval);
+		}
+
+		// on mouseover stop the autoplay
+		$("#carousel").mouseover(function () {
+			clearInterval(sliderIntervalID);
+		});
+		// on mouseout starts the autoplay
+		$("#carousel").mouseout(function () {
+			startSlider();
+		});
+
+		//on right clicking the carousal
+		$("#carousel > #right").click(function () {
+			run(1);
+		});
+
+
+		//on left button click of the carousal
+		$("#carousel > #left").click(function () {
+			run(0);
+		});
+
+
+		//moves the slider back or forth based on x (1 = forward 0 = backward)
+		function run(x) {
+			position = $("#carousel").find(".show").index();
+			if (x == 1)
+				++position;
+			else
+				--position;
+			checker();
+			// changeCarousal(); //function call that actually changes slides
+		}
+
+
+		//just a function to reposition the slider when out of bounds
+		function checker() {
+			if (position >= size) {
+				position = 0;
+			}
+			else if (position < 0) {
+				position = size - 1;
+			}
+			//console.log(position);
+		};
+
+
+		//this changes the image and button selection
+		function changeCarousal() {
+			$("#carousel").find(".show").removeClass("show").fadeOut();
+			$("#carousel > div").eq(position).fadeIn(changeInterval).addClass("show");
+			$("#carousel > ul").find(".showli").removeClass("showli");
+			$("#carousel > ul > li").eq(position).addClass("showli");
+		}
+
+		//when use clicks slider button
+		$("#carousel > ul > li").click(function () {
+			$('#carousel > ul > li').removeClass('big');
+			$(this).addClass('big')
+			position = $(this).index();
+			$('#carousel > div').removeClass('show');
+			$('#carousel > div').eq(position).addClass('show');
+			return;
+			var temp = $("#carousel").find(".show").index();
+			if (position != temp) {
+				// changeCarousal();
+				//big
+			}
+		});
+	}
+
+
+
+	
+
+// 	// ===== Scroll to Top ==== 
+// 	$(window).scroll(function() {
+//     if ($(this).scrollTop() >= 50) {    // If page is scrolled more than 50px
+//         $('#top').fadeIn("fast");       // Fade in the arrow
+//     } else {
+//         $('#top').fadeOut("fast");      // Else fade out the arrow
+//     }
+// });
+// $('#top').click(function() {            // When arrow is clicked
+// 	$('body,html').animate({
+//         scrollTop : 0                   // Scroll to top of body
+//     }, 500);
+// });
+
+
+});
+
+</script>
+
+
+
+<!-- youtube video -->
+
+<script type="text/javascript">
+
+
+
+	$(document).ready(function(){
+
+// poster frame click event
+$(document).on('click','.js-videoPoster',function(ev) {
+	ev.preventDefault();
+	var $poster = $(this);
+	var $wrapper = $poster.closest('.js-videoWrapper');
+	videoPlay($wrapper);
+});
+
+// play the targeted video (and hide the poster frame)
+function videoPlay($wrapper) {
+	var $iframe = $wrapper.find('.js-videoIframe');
+	var src = $iframe.data('src');
+  // hide poster
+  $wrapper.addClass('videoWrapperActive');
+  // add iframe src in, starting the video
+  $iframe.attr('src',src);
+}
+
+// stop the targeted/all videos (and re-instate the poster frames)
+function videoStop($wrapper) {
+  // if we're stopping all videos on page
+  if (!$wrapper) {
+  	var $wrapper = $('.js-videoWrapper');
+  	var $iframe = $('.js-videoIframe');
+  // if we're stopping a particular video
+} else {
+	var $iframe = $wrapper.find('.js-videoIframe');
+}
+  // reveal poster
+  $wrapper.removeClass('videoWrapperActive');
+  // remove youtube link, stopping the video from playing in the background
+  $iframe.attr('src','');
+}
+
+});
+
+</script>
+
+<!-- end youtube -->
+
+
+<!-- Play video script -->
+<!-- <script type="text/javascript">
+
+	function goFullscreen(id) {
+		var element = document.getElementById(id);       
+		if (element.mozRequestFullScreen) {
+			element.mozRequestFullScreen();
+		} else if (element.webkitRequestFullScreen) {
+			element.webkitRequestFullScreen();
+		}  
+	}
+
+</script> -->
+
+
+<script type="text/javascript">
+	
+	$(".modal-wide").on("show.bs.modal", function() {
+		var height = $(window).height() - 200;
+		$(this).find(".modal-body").css("max-height", height);
+	});
+
+</script>
+
+
+<!-- play btn -->
+
+<script type="text/javascript">
+$("#slideshow1 > img:gt(0)").hide();
+
+setInterval(function() {
+  $('#slideshow1 > img:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow1');
+}, 2000);
+
+
+</script>
+
+<!-- end play btn -->
+
+
+
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<!-- end - character -->
+
+
+<body>
+
+<!-- nav -->
+ <div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <hr>
+	  <a href="#section02"><img class="nav_image" onclick="closeNav()" src="img/mobile/nav_1.png"></a>
+	  <hr>
+	  <a href="#section03"><img class="nav_image" onclick="closeNav()" src="img/mobile/nav_2.png"></a>
+	  <hr>
+	  <a href="#section04"><img class="nav_image" onclick="closeNav()" src="img/mobile/nav_3.png"></a>
+	  <hr>
+	</div>
+
+	<span style="font-size:30px;cursor:pointer" class=nav_btn onclick="openNav()"></span>
+
+	<script>
+	function openNav() {
+	    document.getElementById("mySidenav").style.width = "100vw";
+	    document.getElementById("mySidenav").style.opacity = "0.95";
+	}
+
+	function closeNav() {
+	    document.getElementById("mySidenav").style.width = "0";
+	}
+
+
+
+	</script>
+<!-- end nav -->
+
+
+	<!-- start + video -->
+
+	<section id="section01" class="demo">
+
+		<div id='stars'></div>
+		<!-- <div id='falling_star'></div> -->
+		<!-- <div id='falling_star1'></div> -->
+		<!-- play youtube video -->
+
+		<a class="playbtn" href="#section04">
+		<div id="slideshow1" class="shownImage">
+		  <img class="opaque" src="img/play_1.png" alt="contemporaryArts1" />
+		  <img src="img/play_2.png" alt="contemporaryArts2" />
+		</div>
+		</a>
+
+		<!-- <a id="char_btn" href="#section02"></a> -->
+		<a id="stic_btn" href="#section03"></a>
+
+		<a  href="#section02">
+			<i id="char_btn" class="preview-item shake shake-slow">
+	        	<span class="flip"></span>
+	      	</i>
+      	</a>
+
+
+		<img class="shadow" src="img/shadow.png">
+		<div class="station"></div>
+
+		<div id="cloud1"></div>
+		<div id="cloud2"></div>
+		<div id="cloud3"></div>
+		<div id="cloud4"></div>
+		<!-- 	<div id="cloud5"></div>
+		<div id="cloud6"></div> -->
+
+	<!-- 		<img id="cloud1" src="img/cloud1">
+			<img id="cloud2" src="img/cloud2">
+ 			<img id="cloud3" src="img/cloud3">
+ 			<img id="cloud4" src="img/cloud4">
+ 		-->
+ 		<!-- <img class="bg1" src="img/bg1_6.png"> -->
+ 		<img class="mvlogo" src="img/logo1.png"/>
+
+
+ 		<!-- <a href="#section02"><span ></span>START!!!</a> -->
+ 		<a href="#section02" class="scroll1"><img class="scrollbtn1" src="img/start.png"></a>
+
+ 	</section>
+
+ 	<!-- end - start -->
+
+ 	<!-- character - slider -->
+
+ 	<section id="section02" class="demo">
+ 		<!-- <img class="bg1" src="img/bg2.png"> -->
+
+ 		<!-- <h1>Scroll Down Button #2</h1> -->
+ 		<!-- <a href="#section03"><span></span></a> -->
+
+
+ 		<a class="scroll2" href="#section03"><img class="scrollbtn2" src="img/scroll.png"></a>
+
+ 		<div class="rocket_c"></div>
+
+ 		<div id="carousel">
+
+ 			
+ 			<div class="show">
+ 				<div class="character c1"><img class="bg_char1" src="img/web_light_c1.gif"></div>
+ 			</div>
+ 			
+
+ 			<div class="">
+ 				<div class="character c2"><img class="bg_char2" src="img/web_light_c2.gif"></div>
+ 			</div>
+
+ 			<div class="">
+ 				<div class="character c3"><img class="bg_char3" src="img/web_light_c3.gif"></div>
+ 			</div>
+
+ 			<div class="">
+ 				<div class="character c4"><img class="bg_char4" src="img/web_light_c4.gif"></div>
+ 			</div>
+
+ 			<div class="">
+ 				<div class="character c5"><img class="bg_char5" src="img/web_light_c5.gif"></div>
+ 			</div>
+
+ 			<div class="">
+ 				<div class="character c6"><img class="bg_char6" src="img/web_light_c6.gif"></div>
+ 			</div>
+
+
+<!--     <i id="left" class="glyphicon glyphicon-circle-arrow-left" style="z-index:2; position:absolute;"></i>
+	<i id="right" class="glyphicon glyphicon-circle-arrow-right" style="z-index:2; position:absolute;"></i> -->
+
+
+	<ul>
+		<li class="big" style="background-image: url('img/c_1.png');
+		" class="showli"></li>
+		<li  style="background-image: url('img/c_2.png');
+		"></li>
+		<li  style="background-image: url('img/c_3.png');
+		"></li>
+		<li  style="background-image: url('img/c_4.png');
+		"></li>
+		<li  style="background-image: url('img/c_5.png');
+		"></li>
+		<li  style="background-image: url('img/c_6.png');
+		"></li>
+	</ul>
+
+	
+	<!-- <a href="#section03"><span></span></a> -->
+
+</div>
+</div>
+</section>
+
+
+<!-- end - character - slider -->
+
+
+
+<!-- Sticker popup -->
+
+
+<section id="section03" class="demo">
+
+	<!-- <img class="bg1" src="img/bg3_6.png"> -->
+
+
+	<div class="rocket_s"></div>
+
+	<!-- <h1>Scroll Down Button #2</h1> -->
+	
+	<div class="stic_container">
+
+
+		<!-- button1 -->
+
+		<!-- Button trigger modal -->
+		<button type="button" class="stk1 btn1 btn-circle-lg" style="outline: none;" data-toggle="modal" href="#tallModal1">
+			<img src="img/im_a.png" width="100%" height="100%">
+		</button>
+
+		<!-- Modal -->
+		<div id="tallModal1" class="modal modal-wide fade">
+		<button type="button" class="close1" data-dismiss="modal">&times;</button>
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+
+					<div class="modal-body ima_body" style="padding: 1% 1% 1% 1%;">
+
+
+						<!-- info -->
+						<div class="ima_sticker_title">
+							<button class="ima_dl purchaseLink" onClick="window.open('https://itunes.apple.com/hk/app/uwants-sticker-pack-1/id1157801828?app=messages&mt=8');"></button>
+
+							<button class="ima_share shareLink" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u='+'itunes.apple.com/hk/app/uwants-sticker-pack-1/id1157801828?app=messages&mt=8');return false;"></button>
+
+							<img class="ima_qrcode" src="img/ima_qr.png">
+
+
+						</div>
+
+
+						<!-- end info -->
+
+						<div class="row">
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima1"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima2"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima3"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima4"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima5"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima6"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima7"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima8"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima9"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima10"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima11"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima12"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima13"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima14"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima15"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima16"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima17"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima18"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima19"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima20"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima21"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima22"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima23"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima24"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF ima25"></div>
+						</div>             
+					</div> 
+
+				</div>
+			</div>
+
+
+		</div>
+		<!-- end button1 -->
+
+
+
+		<!-- ###button 2 -->
+
+		<!-- Button trigger modal -->
+		<button type="button" class="stk2 btn1 btn-circle-lg" style="outline: none;" data-toggle="modal" href="#tallModal2">
+			<img src="img/im_free.png" width="100%" height="100%">
+		</button>
+
+		<!-- Modal -->
+		<div id="tallModal2" class="modal modal-wide fade">
+		<button type="button" class="close1" data-dismiss="modal">&times;</button>
+			
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-body imf_body" style="padding: 1% 1% 1% 1%;">
+
+
+						<!-- info -->
+						<div class="imf_sticker_title">
+							<button class="imf_dl downloadLink" onClick="window.open('https://itunes.apple.com/hk/app/uwants-sticker-pack-free/id1164738311?app=messages&mt=8');"></button>
+
+							<button class="imf_share shareLink" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u='+'itunes.apple.com/hk/app/uwants-sticker-pack-free/id1164738311?app=messages&mt=8');return false;"></button>
+
+							<img class="imf_qrcode" src="img/imf_qr.png">
+
+
+						</div>
+
+
+						<!-- end info -->
+
+						<div class="row">
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/1.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/2.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/3.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/4.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/5.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/6.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/7.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/8.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/9.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/10.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/11.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/12.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/13.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/14.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/15.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/16.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/17.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/18.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/19.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/20.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/21.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/22.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/23.png"></div>
+							<div class="col-xs-4 col-sm-15 col-md-15"><img class="imf" src="img/imf/24.png"></div>
+						</div>             
+					</div> 
+					
+
+				</div>
+			</div>
+		</div>
+
+
+		<!-- end button4 -->
+
+
+		<!-- end button2 -->
+
+
+
+		<!-- button 3 -->
+
+		<!-- Button trigger modal -->
+		<button type="button" class="stk3 btn1 btn-circle-lg" style="outline: none;" data-toggle="modal" href="#tallModal3">
+			<img src="img/tel_1_1.png" width="100%" height="100%">
+		</button>
+
+		<!-- Modal -->
+		<div id="tallModal3" class="modal modal-wide fade">
+		<button type="button" class="close1" data-dismiss="modal">&times;</button>
+
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-body tel1_body" style="padding: 1% 1% 1% 1%;">
+
+
+						<!-- info -->
+						<div class="tel1_sticker_title">
+							<button class="tel1_dl downloadLink" onClick="window.open('https://telegram.me/addstickers/uwantsfriends1');"></button>
+
+							<button class="tel1_share shareLink" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u='+'telegram.me/addstickers/uwantsfriends1');return false;"></button>
+
+							<img class="tel1_qrcode" src="img/tel1_qr.png">
+
+
+						</div>
+
+
+						<!-- end info -->
+
+						<div class="row">
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/1.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/2.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/3.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/4.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/5.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/6.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/7.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/8.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/9.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/10.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/11.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/12.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/13.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/14.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/15.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/16.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/17.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/18.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/19.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/20.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/21.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/22.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/23.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/24.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/25.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/26.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/27.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/28.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/29.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/30.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/31.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/32.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/33.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/34.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/35.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/36.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/37.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/38.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/39.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/40.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/41.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/42.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/43.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/44.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel1" src="img/tel1/45.png"></div>
+
+
+
+					</div>             
+				</div> 
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- end button3 -->
+
+
+
+	<!-- button4 -->
+
+	<!-- Button trigger modal -->
+	<button type="button" class="stk4 btn1 btn-circle-lg" style="outline: none;" data-toggle="modal" href="#tallModal4">
+		<img src="img/tel_2_1.png" width="100%" height="100%">
+	</button>
+
+	<!-- Modal -->
+	<div id="tallModal4" class="modal modal-wide fade">
+	<button type="button" class="close1" data-dismiss="modal">&times;</button>
+
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-body tel2_body" style="padding: 1% 1% 1% 1%;">
+
+
+					<!-- info -->
+					<div class="tel2_sticker_title">
+						<button class="tel2_dl downloadLink" onClick="window.open('https://telegram.me/addstickers/uwantsfriends2');"></button>
+
+						<button class="tel2_share shareLink" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u='+'telegram.me/addstickers/uwantsfriends2');return false;"></button>
+
+						<img class="tel2_qrcode" src="img/tel2_qr.png">
+
+
+					</div>
+
+
+					<!-- end info -->
+
+					<div class="row">
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/46.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/47.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/48.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/49.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/50.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/51.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/52.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/53.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/54.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/55.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/56.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/57.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/58.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/59.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/60.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/61.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/62.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/63.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/64.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/65.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/66.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/67.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/68.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/69.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/70.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/71.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/72.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/73.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/74.png"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15"><img class="tel2" src="img/tel2/75.png"></div>
+
+					</div>             
+				</div> 
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- end button4 -->
+
+
+
+
+	<!-- button5 -->
+
+	<!-- Button trigger modal -->
+	<button type="button" class="stk5 btn1 btn-circle-lg" style="outline: none;" data-toggle="modal" href="#tallModal5">
+		<img src="img/line1.png" width="100%" height="100%">
+	</button>
+
+	<!-- Modal -->
+	<div id="tallModal5" class="modal modal-wide fade">
+	<button type="button" class="close1" data-dismiss="modal">&times;</button>
+
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-body line_body" style="padding: 1% 1% 1% 1%;">
+
+
+					<!-- info -->
+					<div class="line_sticker_title">
+						<button class="line_dl purchaseLink" onClick="window.open('https://store.line.me/stickershop/product/1341255/zh-Hant');"></button>
+
+						<button class="line_share shareLink" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u='+'store.line.me/stickershop/product/1341255/zh-Hant');return false;"></button>
+
+						<img class="line_qrcode" src="img/line_qr.png">
+
+
+					</div>
+
+
+					<!-- end info -->
+
+					<div class="row">
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line1"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line2"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line3"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line4"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line5"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line6"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line7"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line8"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line9"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line10"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line11"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line12"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line13"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line14"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line15"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line16"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line17"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line18"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line19"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line20"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line21"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line22"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line23"></div>
+						<div class="col-xs-4 col-sm-15 col-md-15 animatedGIF line24"></div>
+					</div>             
+				</div> 
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- end button5 -->
+</div>
+
+
+<a class="scroll3" href="#section04"><img class="scrollbtn3" src="img/scroll.png"></a>
+
+</section>
+<!-- end sticker popup -->
+
+
+<section id="section04" class="demo">
+
+	<div class="rocket_v"></div>
+
+	<img class="bg1" src="img/tv_screen3.png">
+
+	<img class="bg2" src="img/mobile/tvscreen2.png">
+
+	<div class="video">
+
+		<!-- the class "videoWrapper169" means a 16:9 aspect ration video. Another option is "videoWrapper43" for 4:3. -->
+		<div class="videoWrapper videoWrapper js-videoWrapper">
+
+			<iframe class="videoIframe js-videoIframe" src="" frameborder="0" allowTransparency="true" allowfullscreen data-src="https://www.youtube.com/embed/wdypZWuoKvQ?autoplay=1& modestbranding=1&rel=0&hl=sv"></iframe>
+			<!-- the poster frame - in the form of a button to make it keyboard accessible -->
+			<button class="videoPoster js-videoPoster" style="background-image:url(img/tv_screen.png);">Play video</button>
+		</div>
+
+	</div>
+					<div id="roll"></div>
+
+	
+			<footer id="footer" ></footer>
+
+		</section>
+
+		<!-- back to Top -->
+
+	
+		<div class="pageTop" id="top">
+				<a href="">
+					<!-- <img src="img/top.png" width="100%" height="100%" alt=""> -->
+					<div class="top_btn"></div>
+				</a>
+		</div>
+
+		<!-- end back to top -->
+
+		<a href="#" class="go-top"></a>
+
+		
+
+	</body>
+
+
+
+
+	</html>
